@@ -7,11 +7,7 @@ import os
 path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, path + '/../../readers/html/exportdata')
 
-import index as lindex
-import movie_ratings as lmovieratings
-import lists as llists
-import account_data as laccountdata
-import friend_groups as lfriendgroups
+import reader
 
 
 def exec(inputZipFilepath):
@@ -28,16 +24,7 @@ def extractZip(inputFile, outputDir):
     zipObj.extractall(outputDir)
 
 
-def loadDir(dir):
-  zipdb = {}
-
-  zipdb['index'] = lindex.get(dir + '/index.html')
-  zipdb['movie_ratings'] = lmovieratings.get(dir + '/html/movie-ratings.html')
-  zipdb['lists'] = llists.get(dir + '/html/lists.html')
-  zipdb['account_data'] = laccountdata.get(dir + '/html/account-data.html')
-  zipdb['friend_groups'] = lfriendgroups.get(dir + '/html/friend-groups.html')
-
-  # TODO: Iterate lists and friend groups to get detail of each.
-  # TODO: Load all dir content
+def loadDir(dirr):
+  zipdb = reader.get_all(dirr)
 
   return zipdb
