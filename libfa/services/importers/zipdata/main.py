@@ -8,6 +8,8 @@ path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, path + '/../../readers/html/exportdata')
 
 import index as lindex
+import movie_ratings as lmovieratings
+
 
 def exec(inputZipFilepath):
   outputDir = 'temp'
@@ -24,4 +26,5 @@ def extractZip(inputFile, outputDir):
 
 def loadDir(dir):
   lindex.load(dir + '/index.html')
+  lmovieratings.load(dir + '/html/movie-ratings.html')
   # TODO: Load all dir content
