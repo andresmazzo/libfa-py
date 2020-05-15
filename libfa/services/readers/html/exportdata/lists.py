@@ -18,15 +18,16 @@ def get_data(htmlr):
   data = {};
   data['data'] = []
 
-  dom_list = htmlr.lib().find("table", class_="movie-ratings")
+  dom_list = htmlr.lib().find("table", class_="lists")
 
   for item in dom_list.find_all('tr'):
+      listobj = {}
+      listobj['number'] = item.find('th').string
       tds = item.find_all('td')
-      rating = {}
-      rating['value'] = tds[0].find("div", class_="user-rating").string
-      rating['movie_name'] = tds[1].string
-      rating['created_at'] = tds[2].string
+      listobj['name'] = tds[0].find("a").string
+      listobj['total'] = tds[1].string
+      # TODO: Read list directory here to insert movies in list ?
       
-      data['data'].append(rating)
+      data['data'].append(listobj)
   
   return data
