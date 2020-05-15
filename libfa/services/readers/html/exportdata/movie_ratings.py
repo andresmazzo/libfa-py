@@ -7,10 +7,14 @@ sys.path.insert(0, path + '/../../../../utils')
 
 import htmlr as htmlutil
 
-def load(htmlFilepath):
+def get(htmlFilepath):
   html_content = open(htmlFilepath, 'r').read()
   htmlr = htmlutil.load(html_content)
 
+  return get_data(htmlr)
+
+
+def get_data(htmlr):
   data = {};
   data['ratings'] = []
 
@@ -24,7 +28,5 @@ def load(htmlFilepath):
       rating['created_at'] = tds[2].string
       
       data['ratings'].append(rating)
-
-  print(data)
   
   return data

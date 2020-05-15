@@ -16,6 +16,7 @@ print('')
 
 db = fazip.exec(zipFilepath)
 
+print('data extracted from user exported zip:')
 print(db)
 
 

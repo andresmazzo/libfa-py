@@ -7,10 +7,14 @@ sys.path.insert(0, path + '/../../../../utils')
 
 import htmlr as htmlutil
 
-def load(htmlFilepath):
+def get(htmlFilepath):
   html_content = open(htmlFilepath, 'r').read()
   htmlr = htmlutil.load(html_content)
 
+  return get_data(htmlr)
+
+
+def get_data(htmlr):
   data = {};
   data['exported_at'] = htmlr.lib().find("div", class_="download-ts").string;
 

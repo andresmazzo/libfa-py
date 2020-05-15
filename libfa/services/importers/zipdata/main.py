@@ -14,9 +14,10 @@ import movie_ratings as lmovieratings
 def exec(inputZipFilepath):
   outputDir = 'temp'
   extractZip(inputZipFilepath, outputDir)
-  loadDir(outputDir)
+  db = loadDir(outputDir)
   # TODO: Delete temp dir
 
+  return db
 
 
 def extractZip(inputFile, outputDir):
@@ -25,6 +26,10 @@ def extractZip(inputFile, outputDir):
 
 
 def loadDir(dir):
-  lindex.load(dir + '/index.html')
-  lmovieratings.load(dir + '/html/movie-ratings.html')
+  zipdb = {}
+
+  zipdb['index'] = lindex.get(dir + '/index.html')
+  zipdb['movie_ratings'] = lmovieratings.get(dir + '/html/movie-ratings.html')
   # TODO: Load all dir content
+
+  return zipdb
