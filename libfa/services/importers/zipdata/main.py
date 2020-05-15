@@ -10,6 +10,7 @@ sys.path.insert(0, path + '/../../readers/html/exportdata')
 import index as lindex
 import movie_ratings as lmovieratings
 import lists as llists
+import account_data as laccountdata
 
 
 def exec(inputZipFilepath):
@@ -32,6 +33,7 @@ def loadDir(dir):
   zipdb['index'] = lindex.get(dir + '/index.html')
   zipdb['movie_ratings'] = lmovieratings.get(dir + '/html/movie-ratings.html')
   zipdb['lists'] = llists.get(dir + '/html/lists.html')
+  zipdb['account_data'] = laccountdata.get(dir + '/html/account-data.html')
   # TODO: Load all dir content
 
   return zipdb
