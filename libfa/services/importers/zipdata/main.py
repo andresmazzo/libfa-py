@@ -11,6 +11,7 @@ import index as lindex
 import movie_ratings as lmovieratings
 import lists as llists
 import account_data as laccountdata
+import friend_groups as lfriendgroups
 
 
 def exec(inputZipFilepath):
@@ -34,6 +35,9 @@ def loadDir(dir):
   zipdb['movie_ratings'] = lmovieratings.get(dir + '/html/movie-ratings.html')
   zipdb['lists'] = llists.get(dir + '/html/lists.html')
   zipdb['account_data'] = laccountdata.get(dir + '/html/account-data.html')
+  zipdb['friend_groups'] = lfriendgroups.get(dir + '/html/friend-groups.html')
+
+  # TODO: Iterate lists and friend groups to get detail of each.
   # TODO: Load all dir content
 
   return zipdb
