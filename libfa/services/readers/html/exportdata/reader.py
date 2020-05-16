@@ -8,6 +8,7 @@ import pages.movie_ratings as lmovieratings
 import pages.list as llist
 import pages.lists as llists
 import pages.account_data as laccountdata
+import pages.friend_group as lfriendgroup
 import pages.friend_groups as lfriendgroups
 
 path = os.path.dirname(os.path.abspath(__file__))
@@ -27,55 +28,26 @@ def get_all(basePath):
 
   db['sections'] = {}
 
-  db['sections']['lists'] = []
+  db['sections']['list'] = []
   for list_data in db['pages']['lists']['data']:
-    list_page = get_page('list', basePath + '/html/' + list_data['url'])
-    db['sections']['lists'].append(list_page)
+    page_data = get_page('list', basePath + '/html/' + list_data['url'])
+    db['sections']['list'].append(page_data)
 
-  # db['sections']['friend-group'] = get_section(basePath, 'friend-group')
-  # db['sections']['list'] = get_section(basePath, 'list')
-  # db['sections']['movie-review'] = get_section(basePath, 'movie-review')
+  db['sections']['friend-group'] = []
+  for friend_group_data in db['pages']['friend-groups']['data']:
+    page_data = get_page('friend-group', basePath + '/html/' + friend_group_data['filepath'])
+    db['sections']['friend-group'].append(page_data)
 
   # TODO: Support all features (im threads, ignore movies, etc)
 
   return db
-
-# def get_section(basePath, section_name):
-#   return {
-#         'movie-review': get_section_movie_review(basePath),
-#         'list': get_section_list(basePath),
-#         'friend-group': get_section_friend_group(basePath)
-#     }[section_name]
-
-
-# def get_section_list(basePath):
-#   db = {}
-#   for item in dom_list.find_all('tr'):
-#     db['t'] = get_page(basePath, 'lists')
-#   # iterate lists
-
-#   return db
-
-# def get_section_movie_review(basePath):
-#   db = {}
-#   db['lists'] = get_page(basePath, 'lists')
-#   # iterate lists
-
-#   return db
-
-# def get_section_friend_group(basePath):
-#   db = {}
-#   db['lists'] = get_page(basePath, 'lists')
-#   # iterate lists
-
-#   return db
-
 
 def get_page(page_name, filepath):
   page_readers = {
       'index': lindex,
       'account-data': laccountdata,
       'friend-groups': lfriendgroups,
+      'friend-group': lfriendgroup,
       'lists': llists,
       'list': llist,
       'movie-ratings': lmovieratings,
