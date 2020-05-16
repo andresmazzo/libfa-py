@@ -18,15 +18,13 @@ def get_data(htmlr):
   data = {};
   data['data'] = []
 
+  data['name'] = htmlr.lib().title.string
   dom_list = htmlr.lib().find("table", class_="lists")
 
   for item in dom_list.find_all('tr'):
       listobj = {}
       listobj['number'] = item.find('th').string
-      tds = item.find_all('td')
-      listobj['name'] = tds[0].find("a").string
-      listobj['url'] = tds[0].find("a")['href']
-      listobj['total'] = tds[1].string
+      listobj['movie_name'] = item.find("td").string
       
       data['data'].append(listobj)
   

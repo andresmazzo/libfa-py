@@ -5,6 +5,7 @@ import os
 
 import pages.index as lindex
 import pages.movie_ratings as lmovieratings
+import pages.list as llist
 import pages.lists as llists
 import pages.account_data as laccountdata
 import pages.friend_groups as lfriendgroups
@@ -17,53 +18,70 @@ import htmlr as htmlutil
 def get_all(basePath):
   db = {}
 
-  db['index'] = get_page(basePath, 'index')
-  db['account_data'] = get_page(basePath, 'account-data')
-  db['movie_ratings'] = get_page(basePath, 'movie-ratings')
-  db['lists'] = get_page(basePath, 'lists')
-  db['friend_groups'] = get_page(basePath, 'friend-groups')
+  db['pages'] = {}
+  db['pages']['index'] = get_page('index', basePath + '/index.html')
+  db['pages']['account-data'] = get_page('account-data', basePath + '/html/account-data.html')
+  db['pages']['movie-ratings'] = get_page('movie-ratings', basePath + '/html/movie-ratings.html')
+  db['pages']['lists'] = get_page('lists', basePath + '/html/lists.html')
+  db['pages']['friend-groups'] = get_page('friend-groups', basePath + '/html/friend-groups.html')
 
-  # TODO: Implement get_section
-  # TODO: Load all dir content
+  db['sections'] = {}
 
-  return db
+  db['sections']['lists'] = []
+  for list_data in db['pages']['lists']['data']:
+    list_page = get_page('list', basePath + '/html/' + list_data['url'])
+    db['sections']['lists'].append(list_page)
 
-def get_section(basePath, section_name):
-  return {
-        'movie-review': get_section_movie_review(basePath),
-        'list': get_section_list(basePath),
-        'friend-group': get_section_friend_group(basePath)
-    }[section_name]
+  # db['sections']['friend-group'] = get_section(basePath, 'friend-group')
+  # db['sections']['list'] = get_section(basePath, 'list')
+  # db['sections']['movie-review'] = get_section(basePath, 'movie-review')
 
-
-def get_section_list(basePath):
-  db = {}
-  db['lists'] = get_page(basePath, 'lists')
-  # iterate lists
+  # TODO: Support all features (im threads, ignore movies, etc)
 
   return db
 
-def get_section_movie_review(basePath):
-  db = {}
-  db['lists'] = get_page(basePath, 'lists')
-  # iterate lists
-
-  return db
-
-def get_section_friend_group(basePath):
-  db = {}
-  db['lists'] = get_page(basePath, 'lists')
-  # iterate lists
-
-  return db
+# def get_section(basePath, section_name):
+#   return {
+#         'movie-review': get_section_movie_review(basePath),
+#         'list': get_section_list(basePath),
+#         'friend-group': get_section_friend_group(basePath)
+#     }[section_name]
 
 
-def get_page(basePath, page_name):
-  return {
-      'index': lindex.get(basePath + '/index.html'),
-      'account-data': laccountdata.get(basePath + '/html/account-data.html'),
-      'friend-groups': lfriendgroups.get(basePath + '/html/friend-groups.html'),
-      'lists': llists.get(basePath + '/html/lists.html'),
-      'movie-ratings': lmovieratings.get(basePath + '/html/movie-ratings.html'),
-      # 'movie-reviews': lmoviereviews.get(basePath + '/html/movie-reviews.html'),
-  }[page_name]
+# def get_section_list(basePath):
+#   db = {}
+#   for item in dom_list.find_all('tr'):
+#     db['t'] = get_page(basePath, 'lists')
+#   # iterate lists
+
+#   return db
+
+# def get_section_movie_review(basePath):
+#   db = {}
+#   db['lists'] = get_page(basePath, 'lists')
+#   # iterate lists
+
+#   return db
+
+# def get_section_friend_group(basePath):
+#   db = {}
+#   db['lists'] = get_page(basePath, 'lists')
+#   # iterate lists
+
+#   return db
+
+
+def get_page(page_name, filepath):
+  page_readers = {
+      'index': lindex,
+      'account-data': laccountdata,
+      'friend-groups': lfriendgroups,
+      'lists': llists,
+      'list': llist,
+      'movie-ratings': lmovieratings,
+      # 'movie-reviews': lmoviereviews
+  }  
+
+  page_reader = page_readers[page_name]
+
+  return page_reader.get(filepath)
