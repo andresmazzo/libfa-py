@@ -3,6 +3,9 @@
 import sys
 import os
 
+path = os.path.dirname(os.path.abspath(__file__))
+
+sys.path.insert(0, path + '/')
 import pages.index as lindex
 import pages.movie_ratings as lmovieratings
 import pages.list as llist
@@ -11,7 +14,6 @@ import pages.account_data as laccountdata
 import pages.friend_group as lfriendgroup
 import pages.friend_groups as lfriendgroups
 
-path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, path + '/../../../../utils')
 
 import htmlr as htmlutil
