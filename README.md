@@ -3,7 +3,10 @@ Welcome to the FilmAffinity Python Library. My mission is to rescue from the inc
 
 ## Requirements
 - Python3
-- Python3 BeautifulSoup4 (`sudo pip install BeautifulSoup4` :P)
+- Python3 package: BeautifulSoup4
+- Python3 package: [microdata](https://github.com/edsu/microdata)
+
+> Install python packages with: `sudo pip install {packagename}` :P
 
 ## Description
 Do you want to convert the zip with html old files that FilmAffinity exports as your user data? Or get some data about movies? Continue reading.
