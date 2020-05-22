@@ -19,7 +19,7 @@ def ratings(data, outputFilepath):
   for item in data:
     if item.type == 'movie':
       writer.writerow(movie_data(item))
-    else if item.type == 'tvshow':
+    elif item.type == 'tvshow':
       writer.writerow(tvshow_data(item))
 
 

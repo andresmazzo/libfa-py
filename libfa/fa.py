@@ -8,20 +8,28 @@ sys.path.insert(0, path + '/')
 
 from databases import db
 
+from services.importers.zipdata import main as importer_expdata
+from services.exporters.csv_v1 import main as exporter_csv
 
+# FA Class integrates all libfa modules: importers, exporters and database
 class FA:
   def __init__(self):
     self.db = db.DB('fa')
 
-  def importer(inputfilepath):
+  def job_import(self, type, filepath):
     # implement importer and convert data to db
-    return
+    data = importer_expdata.exec(filepath)
 
-  def complete():
+    self.db.insert('user', data)
+
+
+  def complete(self):
     # iterate db and get missing data from web reader
     return
 
-  def exporter(outputdir):
+
+  def job_export(self, outputdir):
     # implement exporter using db
-    return
+    data = db.get('user')['ratings']
+    exporter_csv.ratings(data, outputdir)
     

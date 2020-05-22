@@ -13,6 +13,9 @@ class DB:
     self.db['user'] = {} # account, friends, lists, ratings, etc
     self.db['medias'] = {} # movies and tv shows
 
-  def get(path):
-    return db[path]
+  def get(self, key):
+    return self.db[key]
+
+  def insert(self, key, data):
+    self.db[key] = data
     
