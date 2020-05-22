@@ -13,18 +13,12 @@ import reader
 def exec(inputZipFilepath):
   outputDir = 'temp'
   extractZip(inputZipFilepath, outputDir)
-  db = loadDir(outputDir)
+  data = reader.get_all(outputDir)
   # TODO: Delete temp dir
 
-  return db
+  return data
 
 
 def extractZip(inputFile, outputDir):
   with ZipFile(inputFile, 'r') as zipObj:
     zipObj.extractall(outputDir)
-
-
-def loadDir(dirr):
-  zipdb = reader.get_all(dirr)
-
-  return zipdb

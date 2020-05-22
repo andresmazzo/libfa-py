@@ -30,9 +30,12 @@ db = fazip.exec(zipFilepath)
 
 #### Exporters
 ```
-from libfa.services.exporters.csv import main as facsvexporter
+from libfa.services.exporters.csv_v1 import main as facsvexporter
 
-facsvexporter.exec(db, filepath.csv)
+facsvexporter.all(db, /path/you/want/)
+facsvexporter.ratings(db, /path/you/want/filepath.csv)
+facsvexporter.lists(db, /path/you/want/filepath.csv)
+facsvexporter.friends(db, /path/you/want/filepath.csv)
 ```
 
 ## Contributions
