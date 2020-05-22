@@ -14,10 +14,6 @@ import pages.account_data as laccountdata
 import pages.friend_group as lfriendgroup
 import pages.friend_groups as lfriendgroups
 
-sys.path.insert(0, path + '/../../../../utils')
-
-import htmlr as htmlutil
-
 def get_all(basePath):
   data = {}
 

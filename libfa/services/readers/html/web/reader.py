@@ -9,10 +9,6 @@ sys.path.insert(0, path + '/')
 import pages.index as lindex
 import pages.movie_info as lmovieinfo
 
-sys.path.insert(0, path + '/../../../../utils')
-
-import htmlr as htmlutil
-
 
 def get_page(page_name, uripath):
   page_readers = {
