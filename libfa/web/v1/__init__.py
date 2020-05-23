@@ -1,22 +1,10 @@
-#!/usr/bin/python3
+  #!/usr/bin/python3
 
 import sys
 import os
 import importlib
 
-from libfa.web.v1.pages import (page_index, page_movie_info)
-
-
-def get_page(name, filepath):
-  dicts = {
-      'index': page_index,
-      'movie-info': page_movie_info
-  }  
-
-  page = dicts[name]
-
-  return page.get(filepath)
-
+from libfa.web.v1.pages import get_page
 
 
 def movie(locale, id):

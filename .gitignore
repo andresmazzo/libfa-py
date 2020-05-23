@@ -1,5 +1,6 @@
 *.pyc
 __pycache__
+libfa_py.egg-info/
 dist/
 build/
 temp/

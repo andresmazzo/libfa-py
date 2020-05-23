@@ -2,7 +2,7 @@
 
 import sys
 import os
-import requests
+import urllib.request
 
 def get(htmlWebpath):
   with urllib.request.urlopen(htmlWebpath) as response:
