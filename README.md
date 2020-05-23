@@ -14,28 +14,29 @@ Do you want to convert the zip with html old files that FilmAffinity exports as 
 ## Usage
 
 ### Services
-#### Readers
-```
-from libfa.services.readers.html.exportdata import reader as fahtmlreader
-
-db = fahtmlreader.get_all(basePath)
-```
-
 #### Importers
 ```
-from libfa.services.importers.zipdata import main as fazip
+import libfa
 
-db = fazip.exec(zipFilepath)
+db = libfa.importer.exportdata.exec(zipFilepath)
 ```
 
 #### Exporters
 ```
-from libfa.services.exporters.csv_v1 import main as facsvexporter
+import libfa
 
-facsvexporter.all(db, /path/you/want/)
-facsvexporter.ratings(db, /path/you/want/filepath.csv)
-facsvexporter.lists(db, /path/you/want/filepath.csv)
-facsvexporter.friends(db, /path/you/want/filepath.csv)
+libfa.exporter.csv_v1.all(db, /path/you/want/)
+libfa.exporter.csv_v1.ratings(db, /path/you/want/filepath.csv)
+libfa.exporter.csv_v1.lists(db, /path/you/want/filepath.csv)
+libfa.exporter.csv_v1.friends(db, /path/you/want/filepath.csv)
+```
+
+#### Web
+```
+import libfa
+
+movie = libfa.web.v1.get_movie(1234)
+results = libfa.web.v1.search('Stalker')
 ```
 
 ## Contributions
