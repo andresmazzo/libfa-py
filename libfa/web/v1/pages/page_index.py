@@ -1,19 +1,11 @@
 """Page index module."""
-import urllib.request
 from bs4 import BeautifulSoup
 
 
-def get(webpath):
-    """Request uri and get data."""
-    with urllib.request.urlopen(webpath) as response:
-        htmldoc = response.read()
-        soup = BeautifulSoup(htmldoc, 'html.parser')
-
-        return get_data(soup)
-
-
-def get_data(soup):
+def get(htmldoc):
     """Get page data."""
+    soup = BeautifulSoup(htmldoc, 'html.parser')
+
     data = {}
     data['categories'] = []
 
