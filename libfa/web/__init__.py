@@ -1,3 +1,2 @@
-#!/usr/bin/python3
-
+"""Web module."""
 import libfa.web.v1

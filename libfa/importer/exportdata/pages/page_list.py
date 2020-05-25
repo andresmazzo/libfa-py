@@ -1,20 +1,19 @@
-#!/usr/bin/python3
+"""list page module."""
 
-import sys
-import os
 
 def get_data(soup):
-  data = {};
-  data['data'] = []
+    """get page data."""
+    data = {}
+    data['data'] = []
 
-  data['name'] = soup.title.string
-  dom_list = soup.find("table", class_="lists")
+    data['name'] = soup.title.string
+    dom_list = soup.find("table", class_="lists")
 
-  for item in dom_list.find_all('tr'):
-      listobj = {}
-      listobj['number'] = item.find('th').string
-      listobj['movie_name'] = item.find("td").string
-      
-      data['data'].append(listobj)
-  
-  return data
+    for item in dom_list.find_all('tr'):
+        listobj = {}
+        listobj['number'] = item.find('th').string
+        listobj['movie_name'] = item.find("td").string
+
+        data['data'].append(listobj)
+
+    return data

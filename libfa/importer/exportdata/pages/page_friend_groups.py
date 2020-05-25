@@ -1,22 +1,21 @@
-#!/usr/bin/python3
+"""friend_groups page module."""
 
-import sys
-import os
 
 def get_data(soup):
-  data = {};
-  data['data'] = []
+    """get data."""
+    data = {}
+    data['data'] = []
 
-  dom_list = soup.find("table", class_="ml")
-  
-  for item in dom_list.find_all('tr'):
-      tds = item.find_all('td')
+    dom_list = soup.find("table", class_="ml")
 
-      group = {}
-      group['name'] = tds[0].find("a").string
-      group['filepath'] = tds[0].find("a")['href']
-      group['total'] = tds[1].string
+    for item in dom_list.find_all('tr'):
+        tds = item.find_all('td')
 
-      data['data'].append(group)
-  
-  return data
+        group = {}
+        group['name'] = tds[0].find("a").string
+        group['filepath'] = tds[0].find("a")['href']
+        group['total'] = tds[1].string
+
+        data['data'].append(group)
+
+    return data

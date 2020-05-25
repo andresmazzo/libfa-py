@@ -38,9 +38,7 @@ results = libfa.web.v1.search('Stalker')
 ```
 
 ## Tests
-```
-python -m unittest discover -s libfa -p "*_test.py"
-```
+Run all with tox: `tox`
 
 ## Generate distro
 More info: https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives

@@ -4,3 +4,5 @@ libfa_py.egg-info/
 dist/
 build/
 temp/
+.tox/
+.pytest_cache/
