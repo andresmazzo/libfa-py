@@ -36,16 +36,16 @@ def header():
 def movie_data(obj):
     """get movie data."""
     return [
-        obj.id,
+        obj['id'],
         'movie',
-        obj.name,
+        obj['name'],
     ]
 
 
 def tvshow_data(obj):
     """get tvshow data."""
     return [
-        obj.id,
+        obj['id'],
         'tvshow',
-        obj.name
+        obj['name']
     ]

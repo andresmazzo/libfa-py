@@ -1,7 +1,6 @@
 """csv_v1 ratings module."""
 
 import csv
-from libfa.models.ListModel import List as ListModel
 from typing import List
 
 
@@ -13,7 +12,7 @@ def lists(data: List, filepath: str):
     writer.writerow(header())
 
     for item in data:
-        writer.writerow([item.id, item.name])
+        writer.writerow([item['id'], item['name']])
 
 
 def header():

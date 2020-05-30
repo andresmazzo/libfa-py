@@ -3,7 +3,6 @@
 import unittest
 import libfa.exporter.csv_v1 as exporter
 import libfa.exporter.csv_v1.lists as mlists
-from libfa.models.ListModel import List as ListModel
 
 
 class TestExporterCsv(unittest.TestCase):
@@ -19,10 +18,7 @@ class TestExporterCsv(unittest.TestCase):
 
     def test_lists_module_run(self):
         """Test lists module."""
-        obj = {}
-        obj['id'] = 1
-        obj['name'] = 'hello world'
-        list1 = ListModel(obj)
+        list1 = {'id': 1, 'name': 'hello world'}
         data = [list1]
         mlists.lists(data, "temp/example.csv")
 
