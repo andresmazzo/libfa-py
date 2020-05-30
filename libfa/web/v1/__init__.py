@@ -6,7 +6,7 @@ from libfa.web.v1.pages import get_page
 
 # ---- getter functions
 
-def movie(locale, id_attr):
+def movie(locale: str, id_attr):
     """Find movie by id."""
     result = get_page('movie-info', get_html(web_uri(locale, '/film' + id_attr + '.html')))
 
@@ -21,23 +21,23 @@ def movie(locale, id_attr):
     }
 
 
-def top_fa(locale):
+def top_fa(locale: str):
     """Get the Top FilmAffinity."""
     return get_page('top-fa', get_html(web_uri(locale, '/topgen.php')))
 
 
-def best_tops(locale):
+def best_tops(locale: str):
     """Get the Best Tops."""
     return get_page('best-top', get_html(web_uri(locale, '/best_tops.php')))
 
 
-def director(locale, name):
+def director(locale: str, name: str):
     """Find a director."""
     # TODO: Complete this faker example
     return get_page('search', get_html(web_uri(locale, '/search.html?name=' + name)))
 
 
-def search(locale, param):
+def search(locale: str, param: str):
     """Search something."""
     # TODO: Complete this faker example
     return get_page('search', get_html(web_uri(locale, '/search.html?name=' + param)))
@@ -45,7 +45,7 @@ def search(locale, param):
 
 # ---- helper functions
 
-def web_uri(locale, path):
+def web_uri(locale: str, path: str):
     """Get uri."""
     return base_uri() + '/' + locale + path
 
@@ -77,7 +77,7 @@ def base_uri():
     return 'https://www.filmaffinity.com'
 
 
-def get_html(webpath):
+def get_html(webpath: str):
     """Get html from webpath url."""
     with urllib.request.urlopen(webpath) as response:
         htmldoc = response.read()

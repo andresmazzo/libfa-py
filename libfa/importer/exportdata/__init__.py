@@ -12,7 +12,7 @@ def support():
     return ['index', 'account-data', 'movie-ratings', 'lists', 'friend-groups']
 
 
-def run(filepath):
+def run(filepath: str):
     """Exec importer for an specified zip file."""
     output_dir = 'temp'
     with ZipFile(filepath, 'r') as zip_obj:
@@ -24,7 +24,7 @@ def run(filepath):
     return data
 
 
-def get_all(basepath):
+def get_all(basepath: str):
     """Returns data from all pages."""
     data = {}
 

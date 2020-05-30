@@ -2,7 +2,7 @@
 from libfa.web.v1.pages import page_index, page_movie_info, page_top_fa
 
 
-def get_page(name, html):
+def get_page(name: str, html):
     """Get an specified page."""
     dicts = {
         'index': page_index,

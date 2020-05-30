@@ -6,7 +6,7 @@ from libfa.importer.exportdata.pages import page_list, page_lists
 from libfa.importer.exportdata.pages import page_friend_group, page_friend_groups
 
 
-def get_page(name, filepath):
+def get_page(name: str, filepath: str):
     """Get page by name."""
     pages_dict = {
         'index': page_index,
@@ -23,7 +23,7 @@ def get_page(name, filepath):
     return page_reader.get_data(load_html(filepath))
 
 
-def load_html(filepath):
+def load_html(filepath: str):
     """Load html with soup."""
     htmldoc = open(filepath, 'r').read()
     soup = BeautifulSoup(htmldoc, 'html.parser')

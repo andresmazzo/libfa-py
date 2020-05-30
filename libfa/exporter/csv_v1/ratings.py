@@ -1,9 +1,10 @@
 """csv_v1 ratings module."""
 
 import csv
+from typing import List
 
 
-def ratings(data, filepath):
+def ratings(data: List, filepath: str):
     """generate ratings file."""
     fp = open(filepath, 'w')
     writer = csv.writer(fp)
