@@ -1,5 +1,7 @@
 ## Introduction
-Welcome to the FilmAffinity Python Library. My mission is to rescue from the incompatible protocols and formats the platform has :/.
+Welcome to the **FilmAffinity Python Library**. My mission is to rescue from the incompatible protocols and formats the platform has :/.
+
+> IMPORTANT: Package is in alpha stage and active development.
 
 ## Requirements
 - Python3
@@ -7,7 +9,7 @@ Welcome to the FilmAffinity Python Library. My mission is to rescue from the inc
 > Install python packages with: `sudo pip install -r requirements.txt` :P
 
 ## Description
-Do you want to convert the zip with html old files that FilmAffinity exports as your user data? Or get some data about movies? Continue reading.
+Do you want to convert the zip with html old files that FilmAffinity exports as your user data? Or get some data about movies from the web? Continue reading.
 
 ## Usage
 
