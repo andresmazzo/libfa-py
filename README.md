@@ -20,6 +20,7 @@ import libfa
 
 db = libfa.importer.exportdata.run(zipFilepath)
 ```
+More info [here](/docs/importer.md)
 
 #### Exporters
 ```
@@ -30,14 +31,15 @@ libfa.exporter.csv_v1.ratings(db, /path/you/want/filepath.csv)
 libfa.exporter.csv_v1.lists(db, /path/you/want/filepath.csv)
 libfa.exporter.csv_v1.friends(db, /path/you/want/filepath.csv)
 ```
+More info [here](/docs/exporter.md)
 
 #### Web
 ```
 import libfa
 
-movie = libfa.web.v1.get_movie(1234)
-results = libfa.web.v1.search('Stalker')
+movie = libfa.web.v1.movie('ar', 1234)
 ```
+More info [here](/docs/web.md)
 
 ## Tests
 Run all with tox: `tox`
