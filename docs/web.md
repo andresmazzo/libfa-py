@@ -11,16 +11,16 @@ https://www.filmaffinity.com/ar/film534365.html
 ```python
 import libfa.web.v1 as fawebv1
 
-movie = fawebv1.movie('ar', 534365)
-
-movie['id']
-534365
-movie['name']
-Stalker
-movie['description']
-En un lugar de...
-movie['genre']
-['Ciencia Ficción', 'Drama', ...]
+movie = fawebv1.movie('ar', '534365')
+movie
+{
+    'id': '534365', 
+    'name': 'La zona ', 
+    'description': 'En un lugar de Rusia llamado "La Zona", hace algunos años se estrelló un meteorito. A pesar de que el acceso a este lugar está prohibido, los "stalkers" se dedican a guiar a quienes se atreven a aventurarse en este inquietante paraje. (FILMAFFINITY)', 
+    'genre': 'Ciencia ficción', 
+    'duration': '161 min.', 
+    'published_at': '1979'
+}
 ```
 
 **Get Top Filmaffinity**

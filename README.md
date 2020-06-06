@@ -24,48 +24,40 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+Super easy!
 
-### Services
-#### Importers
+Actually there are three services: Web, Importer, Exporter.
+See [docs](/docs) for more info.
+
+Run `python3` to fire up a python command line. Then just play..
 ```
 import libfa
 
-db = libfa.importer.exportdata.run(zipFilepath)
+movie = libfa.web.v1.movie('ar', '534365')
+db = libfa.importer.exportdata.run('/path/you/have/filepath.zip')
+libfa.exporter.csv_v1.ratings(db, '/path/you/want/filepath.csv')
 ```
-More info [here](/docs/importer.md)
 
-#### Exporters
-```
-import libfa
-
-libfa.exporter.csv_v1.all(db, /path/you/want/)
-libfa.exporter.csv_v1.ratings(db, /path/you/want/filepath.csv)
-libfa.exporter.csv_v1.lists(db, /path/you/want/filepath.csv)
-libfa.exporter.csv_v1.friends(db, /path/you/want/filepath.csv)
-```
-More info [here](/docs/exporter.md)
-
-#### Web
-```
-import libfa
-
-movie = libfa.web.v1.movie('ar', 1234)
-```
-More info [here](/docs/web.md)
-
-## Generate distro
-More info: https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives
-```
-python3 setup.py sdist bdist_wheel
-```
 
 ## Development
-- Create Virtual Environment: `python3 -m venv ~/.virtualenvs/libfa-py`
+
+**Virtual environment:**
+- Create: `python3 -m venv ~/.virtualenvs/libfa-py`
 - Activate: `. ~/.virtualenvs/libfa-py/bin/activate`
-- Deactivate: `deactivate`
-- Install requirements: `pip install requirements.txt`
-- Tests: `tox` or `pytest libfa --cov=libfa`
-- If you modify requirements.txt, then run tox with: `tox --recreate`
+- Exit: `deactivate`
+
+**Install requirements:** 
+`pip install requirements.txt`
+
+**Tests:**
+- All: `tox` 
+- Unit: `pytest libfa --cov=libfa`
+>If you modify requirements.txt, then run tox with: `tox --recreate`
+
+**Generate distro:**
+`python3 setup.py sdist bdist_wheel`
+
+More info in https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives
 
 ## Contributions
 Do you have an improvement or find a bug? Create an issue, you are welcome!
