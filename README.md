@@ -1,4 +1,4 @@
-#LIBFA
+# LIBFA
 
 Welcome to the **FilmAffinity Python Library**. My mission is to rescue from the incompatible protocols and formats the platform has :/.
 
@@ -7,6 +7,8 @@ Welcome to the **FilmAffinity Python Library**. My mission is to rescue from the
 ![status](https://img.shields.io/static/v1?label=status&message=ALPHA&color=yellow)
 ![license](https://img.shields.io/github/license/andresmazzo/libfa-py)
 ![size](https://img.shields.io/github/languages/code-size/andresmazzo/libfa-py)
+![coverage](https://img.shields.io/static/v1?label=coverage&message=~80%&color=green)
+![stars](https://img.shields.io/github/stars/andresmazzo/libfa-py?style=social)
 
 The only requirement is **python** :P.
 
@@ -16,7 +18,7 @@ Do you want to convert the zip with html old files that FilmAffinity exports as 
 ## Setup
 Create virtual env, activate and install packages.
 ```
-python -m venv ~/.virtualenvs/libfa-py
+python3 -m venv ~/.virtualenvs/libfa-py
 . ~/.virtualenvs/libfa-py/bin/activate
 pip install -r requirements.txt
 ```
@@ -51,9 +53,6 @@ movie = libfa.web.v1.movie('ar', 1234)
 ```
 More info [here](/docs/web.md)
 
-## Tests
-Run all with tox: `tox`
-
 ## Generate distro
 More info: https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives
 ```
@@ -61,10 +60,12 @@ python3 setup.py sdist bdist_wheel
 ```
 
 ## Development
-- Create Virtual Environment: `python -m venv ~/.virtualenvs/libfa-py`
+- Create Virtual Environment: `python3 -m venv ~/.virtualenvs/libfa-py`
 - Activate: `. ~/.virtualenvs/libfa-py/bin/activate`
 - Deactivate: `deactivate`
 - Install requirements: `pip install requirements.txt`
+- Tests: `tox` or `pytest libfa --cov=libfa`
+- If you modify requirements.txt, then run tox with: `tox --recreate`
 
 ## Contributions
 Do you have an improvement or find a bug? Create an issue, you are welcome!

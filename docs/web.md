@@ -1,12 +1,9 @@
 ## Web
 
-### Drivers
-#### V1
 Actually [Filmaffinity](https://www.filmaffinity.com/) has only one Web version.
 
+### V1
 For more detail see [implementation](/libfa/web/v1/__init__.py).
-
-### Examples
 
 **Find a movie by id**
 

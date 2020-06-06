@@ -1,6 +1,7 @@
 beautifulsoup4
 microdata
 pytest
+pytest-cov
 mock
 tox
 virtualenv
