@@ -1,6 +1,8 @@
 """Web V1 module."""
-import importlib
 import urllib.request
+import urllib.parse as urlparse
+from urllib.parse import urlencode
+
 from libfa.web.v1.pages import get_page
 
 
@@ -51,35 +53,45 @@ def movie(locale: str, id_attr):
     }
 
 
-def top_fa(locale: str):
+def top_fa(locale: str, params: dict):
     """Get the Top FilmAffinity."""
-    result = get_page('top-fa', get_html(web_uri(locale, '/topgen.php')))
+    # ?genre=&country=&notvse=1&fromyear=&toyear=&nodoc=1
+    result = get_page('top-fa', get_html(web_uri(locale, '/topgen.php', params)))
 
     return result['movies']
 
 
 def best_tops(locale: str):
     """Get the Best Tops."""
-    return get_page('best-top', get_html(web_uri(locale, '/best_tops.php')))
+    result = get_page('best-tops', get_html(web_uri(locale, '/best_tops.php', {})))
+
+    return result
 
 
-def director(locale: str, name: str):
-    """Find a director."""
-    # TODO: Complete this faker example
-    return get_page('search', get_html(web_uri(locale, '/search.html?name=' + name)))
-
-
-def search(locale: str, param: str):
+def search(locale: str, params: dict):
     """Search something."""
-    # TODO: Complete this faker example
-    return get_page('search', get_html(web_uri(locale, '/search.html?name=' + param)))
+    # ?stext=&stype=cast
+    # stype support: title|cast|director
+    result = get_page('search', get_html(web_uri(locale, '/search.php', params)))
+
+    return result['data']
 
 
 # ---- helper functions
 
-def web_uri(locale: str, path: str):
+def web_uri(locale: str, path: str, params: dict = {}):
     """Get uri."""
-    return base_uri() + '/' + locale + path
+    # add params to url
+    # https://stackoverflow.com/questions/2506379/add-params-to-given-url-in-python
+    url_parts = list(urlparse.urlparse(base_uri() + '/' + locale + path))
+    query = dict(urlparse.parse_qsl(url_parts[4]))
+    query.update(params)
+
+    # Thanks for quote_via arg. recomendation
+    # https://stackoverflow.com/questions/21823965/use-20-instead-of-for-space-in-python-query-parameters
+    url_parts[4] = urlencode(query, quote_via=urllib.parse.quote)
+
+    return urlparse.urlunparse(url_parts)
 
 
 def locales():

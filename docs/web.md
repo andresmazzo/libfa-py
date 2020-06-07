@@ -54,9 +54,14 @@ https://www.filmaffinity.com/ar/topgen.php
 ```python
 import libfa.web.v1 as fawebv1
 
-results = fawebv1.top_fa('ar')
+results = fawebv1.top_fa('ar', {})
+# search by genre
+results = fawebv1.top_fa('ar', { 'genre': 'AC'})
+# more complex search
+params = { 'fromyear': '1978', 'toyear': '1999', 'country': 'AR'}
+results = fawebv1.top_fa('ar', params)
 
-results['movies']
+results
 [
     {
         'id': '1234',
@@ -76,11 +81,49 @@ https://www.filmaffinity.com/ar/best_tops.php
 import libfa.web as fawebv1
 
 results = fawebv1.best_tops('ar')
+
+results
+{
+    'menu': {
+        'countries': [ ... ],
+        'genres': [ ... ]
+    },
+    'cards': [
+        {
+            'slug': 'best-all',
+            'type': 'country',
+            'title': '...',
+            'links': [
+                {
+                    'name': '...',
+                    'url': '...',
+                },
+                ...
+            ]
+        },
+        ...
+    ]
+}
 ```
 
-**Find a movie by id**
+**Global Search**
 ```python
 import libfa.web as fawebv1
 
-results = fawebv1.search('ar', 'Stalker')
+results = fawebv1.search('ar', {'stext': 'Stalker'})
+# search by title
+results = fawebv1.search('ar', {'stext': 'Stalker', 'stype': 'title'})
+# search by cast
+results = fawebv1.search('ar', {'stext': 'James Stewart', 'stype': 'cast'})
+# search by director
+results = fawebv1.search('ar', {'stext': 'Francis Ford Coppola', 'stype': 'director'})
+results
+[
+    {
+        'id': '1234',
+        'title': '..',
+        'director': '...'
+    },
+    ...
+]
 ```

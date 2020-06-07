@@ -32,7 +32,14 @@ class TestWebV1(unittest.TestCase):
         """test it get top fa successfully."""
         fa_web_v1.get_html = MagicMock(return_value=stubs.get_html('top_fa'))
 
-        data = fa_web_v1.top_fa('ar')
+        data = fa_web_v1.top_fa('ar', {})
+        self.assertEqual(data[0]['id'], '809297')
+
+    def test_get_top_fa_with_genre_filter(self):
+        """test it get top fa successfully."""
+        fa_web_v1.get_html = MagicMock(return_value=stubs.get_html('top_fa'))
+
+        data = fa_web_v1.top_fa('ar', {'genre': 'AC'})
         self.assertEqual(data[0]['id'], '809297')
 
 
