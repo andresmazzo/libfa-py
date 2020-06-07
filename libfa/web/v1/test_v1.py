@@ -33,7 +33,7 @@ class TestWebV1(unittest.TestCase):
         fa_web_v1.get_html = MagicMock(return_value=stubs.get_html('top_fa'))
 
         data = fa_web_v1.top_fa('ar')
-        self.assertEqual(data['movies'][0]['id'], '809297')
+        self.assertEqual(data[0]['id'], '809297')
 
 
 if __name__ == '__main__':

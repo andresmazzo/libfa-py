@@ -17,9 +17,34 @@ movie
     'id': '534365', 
     'name': 'La zona ', 
     'description': 'En un lugar de Rusia llamado "La Zona", hace algunos años se estrelló un meteorito. A pesar de que el acceso a este lugar está prohibido, los "stalkers" se dedican a guiar a quienes se atreven a aventurarse en este inquietante paraje. (FILMAFFINITY)', 
-    'genre': 'Ciencia ficción', 
+    'director': {
+        'url': 'https://www.filmaffinity.com/ar/search.php?stype=director&sn&stext=Andrei%20Tarkovsky',
+        'name': 'Andrei Tarkovsky',
+    },
+    'actors': [
+        {
+            'url': '..',
+            'name': '..'
+        },
+        ...
+    ],
     'duration': '161 min.', 
-    'published_at': '1979'
+    'genre': ['Ciencia ficción', 'Drama'],
+    'published_at': '1979',
+    'rating': {
+        'value': '7.9',
+        'best': '10',
+        'worst': '1',
+        'review_count': '189',
+        'rating_count': '12786',
+    },
+    'reviews': [
+        {
+            'body': '"Aburrida"',
+            'author': 'Carlos Boyero: Diario El Mundo ',
+        },
+        ...
+    ]
 }
 ```
 
@@ -30,6 +55,18 @@ https://www.filmaffinity.com/ar/topgen.php
 import libfa.web.v1 as fawebv1
 
 results = fawebv1.top_fa('ar')
+
+results['movies']
+[
+    {
+        'id': '1234',
+        'title': '..',
+        'year': '1999',
+        'avg_rating': '9.1',
+        'rat_count': '3561'
+    },
+    ...
+]
 ```
 
 **Best Tops Filmaffinity**

@@ -10,20 +10,52 @@ def movie(locale: str, id_attr):
     """Find movie by id."""
     result = get_page('movie-info', get_html(web_uri(locale, '/film' + id_attr + '.html')))
 
-    # convert microdata to movie obj. Is this useful?
+    actors = []
+    for item in result['microdata'].get_all('actor'):
+        actor = {
+            'url': item.url,
+            'name': item.name,
+        }
+        actors.append(actor)
+
+    rating = {
+        'value': result['microdata'].aggregateRating.ratingValue,
+        'best': result['microdata'].aggregateRating.bestRating,
+        'worst': result['microdata'].aggregateRating.worstRating,
+        'review_count': result['microdata'].aggregateRating.reviewCount,
+        'rating_count': result['microdata'].aggregateRating.ratingCount,
+    }
+
+    reviews = []
+    for item in result['microdata'].get_all('review'):
+        review = {
+            'description': item.reviewBody,
+            'author': item.author,
+        }
+        reviews.append(review)
+
     return {
         'id': id_attr,
         'name': result['microdata'].name,
         'description': result['microdata'].description,
-        'genre': result['microdata'].genre,
+        'director': {
+            'url': result['microdata'].director.url,
+            'name': result['microdata'].director.name,
+        },
+        'actors': actors,
         'duration': result['microdata'].duration,
-        'published_at': result['microdata'].datePublished
+        'genres': result['microdata'].get_all('genre'),
+        'published_at': result['microdata'].datePublished,
+        'rating': rating,
+        'reviews': reviews
     }
 
 
 def top_fa(locale: str):
     """Get the Top FilmAffinity."""
-    return get_page('top-fa', get_html(web_uri(locale, '/topgen.php')))
+    result = get_page('top-fa', get_html(web_uri(locale, '/topgen.php')))
+
+    return result['movies']
 
 
 def best_tops(locale: str):
